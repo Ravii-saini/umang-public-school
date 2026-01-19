@@ -1,0 +1,47 @@
+{
+  "name": "school-website",
+  "version": "1.0.0",
+  "description": "Full-stack school website with Sanity Studio admin dashboard",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "studio": "next dev --turbo --hostname 0.0.0.0 --port 3333 app/(studio)/studio"
+  },
+  "keywords": [
+    "school",
+    "nextjs",
+    "sanity",
+    "tailwindcss"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@portabletext/react": "^6.0.2",
+    "@sanity/client": "^7.14.0",
+    "@sanity/icons": "^3.7.4",
+    "@sanity/image-url": "^1.2.0",
+    "@sanity/vision": "^4.22.0",
+    "groq": "^5.4.0",
+    "next": "^14.2.35",
+    "next-sanity": "^11.6.12",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "sanity": "^4.22.0",
+    "styled-components": "^6.3.8"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.19",
+    "@types/node": "^25.0.9",
+    "@types/react": "^19.2.8",
+    "@types/react-dom": "^19.2.3",
+    "autoprefixer": "^10.4.23",
+    "eslint": "^9.39.2",
+    "eslint-config-next": "^16.1.3",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.14",
+    "typescript": "^5.9.3"
+  }
+}
