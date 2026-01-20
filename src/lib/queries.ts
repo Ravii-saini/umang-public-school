@@ -1,7 +1,7 @@
 import { createClient } from "@sanity/client";
 import groq from "groq";
 import { apiVersion, dataset, projectId, sanityClient } from "./sanity.client";
-import type { AboutPage, Announcement, Event, Faculty, GalleryItem, Notice, SiteSettings } from "./types";
+import type { AboutPage, Announcement, Download, Event, Faculty, GalleryItem, Notice, SiteSettings } from "./types";
 
 const noticeFields = `
   _id,
@@ -177,6 +177,70 @@ export async function fetchFeaturedFaculties(): Promise<Faculty[]> {
     return result || [];
   } catch (error) {
     console.error("Error fetching featured faculties:", error);
+    return [];
+  }
+}
+
+export async function fetchDownloads(): Promise<Download[]> {
+  try {
+    const result = await sanityClient.fetch(
+      groq`*[_type == "download"] | order(publishedAt desc){
+        _id,
+        title,
+        description,
+        category,
+        "fileUrl": file.asset->url,
+        fileSize,
+        publishedAt,
+        featured
+      }`
+    );
+    return result || [];
+  } catch (error) {
+    console.error("Error fetching downloads:", error);
+    return [];
+  }
+}
+
+export async function fetchDownloadsByCategory(category: string): Promise<Download[]> {
+  try {
+    const result = await sanityClient.fetch(
+      groq`*[_type == "download" && category == $category] | order(publishedAt desc){
+        _id,
+        title,
+        description,
+        category,
+        "fileUrl": file.asset->url,
+        fileSize,
+        publishedAt,
+        featured
+      }`,
+      { category }
+    );
+    return result || [];
+  } catch (error) {
+    console.error("Error fetching downloads by category:", error);
+    return [];
+  }
+}
+
+export async function fetchFeaturedDownloads(): Promise<Download[]> {
+  try {
+    const result = await sanityClient.fetch(
+      groq`*[_type == "download" && featured == true] | order(publishedAt desc)[0...5]{
+        _id,
+        title,
+        description,
+        category,
+        "fileUrl": file.asset->url,
+        fileSize,
+        publishedAt,
+        featured
+      }`
+    );
+    return result || [];
+  } catch (error) {
+    console.error("Error fetching featured downloads:", error);
     return [];
   }
 }

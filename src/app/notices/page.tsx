@@ -2,7 +2,8 @@ import { NoticeCard } from "@/components/NoticeCard";
 import { PageShell } from "@/components/PageShell";
 import { fetchRecentNotices, fetchSettings } from "@/lib/queries";
 
-export const revalidate = 60;
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export default async function NoticesPage() {
   const [settings, notices] = await Promise.all([fetchSettings(), fetchRecentNotices()]);

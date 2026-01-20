@@ -29,6 +29,10 @@ export const deskStructure: StructureResolver = (S) =>
         .icon(() => "👨‍🏫")
         .child(S.documentTypeList("faculty").title("Faculty").defaultOrdering([{ field: "order", direction: "asc" }])),
       S.listItem()
+        .title("Downloads")
+        .icon(() => "📥")
+        .child(S.documentTypeList("download").title("Downloads").defaultOrdering([{ field: "publishedAt", direction: "desc" }])),
+      S.listItem()
         .title("Contact Submissions")
         .icon(() => "✉️")
         .child(

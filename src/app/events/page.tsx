@@ -2,7 +2,8 @@ import { EventCard } from "@/components/EventCard";
 import { PageShell } from "@/components/PageShell";
 import { fetchEvents, fetchSettings } from "@/lib/queries";
 
-export const revalidate = 60;
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export default async function EventsPage() {
   const [settings, events] = await Promise.all([fetchSettings(), fetchEvents()]);

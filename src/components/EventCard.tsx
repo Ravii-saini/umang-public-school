@@ -9,40 +9,44 @@ type Props = {
 };
 
 export function EventCard({ event, truncate = false }: Props) {
-  const accent = "border-l-4 border-indigo-500/50";
-
   const cardContent = (
     <article
-      className={`card-shadow animate-fade-up card-hover-pop transform-gpu flex flex-col gap-3 rounded-2xl border border-slate-800/70 bg-slate-950/70 p-4 ring-1 ring-slate-900/80 transition-all ${accent} ${
-        truncate ? "cursor-pointer hover:scale-[1.02]" : ""
-      }`}
+      className={`card group flex flex-col gap-4 transition-all hover:-translate-y-1 hover:shadow-lg ${truncate ? "cursor-pointer" : ""
+        }`}
     >
-      <div className="flex items-center justify-between text-xs text-cyan-300/90 sm:text-sm">
-        <p className="font-semibold uppercase tracking-[0.18em]">
+      <div className="flex items-center justify-between text-xs">
+        <span className="font-bold uppercase tracking-wider text-blue-600">
           {event.category || "Event"}
-        </p>
-        <p className="rounded-full bg-slate-900/80 px-3 py-1 text-[0.7rem] font-semibold text-slate-200 ring-1 ring-slate-700">
+        </span>
+        <span className="rounded-full bg-slate-100 px-3 py-1 font-medium text-slate-600">
           {format(event.date)}
-        </p>
+        </span>
       </div>
-      <h3 className="text-base font-semibold tracking-tight text-slate-50 sm:text-lg">
+
+      <h3 className="font-heading text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
         {event.title}
       </h3>
+
       {event.description && (
         <div
-          className={`prose prose-invert prose-xs text-slate-300 sm:prose-sm ${
-            truncate ? "line-clamp-2 overflow-hidden" : ""
-          }`}
+          className={`prose prose-sm prose-slate text-slate-600 ${truncate ? "line-clamp-2" : ""
+            }`}
         >
           <PortableText value={event.description} />
         </div>
       )}
-      <div className="mt-auto flex items-center justify-between text-xs text-slate-400 sm:text-sm">
-        <p className="text-xs font-medium text-slate-300 sm:text-sm">
-          {event.location ? `Location: ${event.location}` : "On campus"}
-        </p>
+
+      <div className="mt-auto flex items-center justify-between border-t border-slate-100 pt-4 text-sm">
+        <div className="flex items-center gap-2 text-slate-500">
+          <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+          {event.location ? event.location : "On campus"}
+        </div>
+
         {truncate && (
-          <span className="text-xs font-medium text-cyan-400 hover:text-cyan-300">
+          <span className="font-medium text-blue-600 group-hover:translate-x-1 transition-transform">
             Read more →
           </span>
         )}

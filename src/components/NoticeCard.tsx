@@ -9,64 +9,68 @@ type Props = {
 };
 
 export function NoticeCard({ notice, truncate = false }: Props) {
-  const accent =
-    notice.priority === "Urgent"
-      ? "border-l-4 border-red-500/70"
-      : notice.pin
-        ? "border-l-4 border-amber-400/60"
-        : "border-l-4 border-cyan-400/40";
+  const isUrgent = notice.priority === "Urgent";
+  const isPinned = notice.pin;
 
   const cardContent = (
     <article
-      className={`card-shadow animate-fade-up card-hover-pop transform-gpu flex flex-col gap-3 rounded-2xl border border-slate-800/70 bg-slate-950/70 p-4 ring-1 ring-slate-900/80 transition-all ${accent} ${
-        truncate ? "cursor-pointer hover:scale-[1.02]" : ""
-      }`}
+      className={`card group flex flex-col gap-4 transition-all hover:-translate-y-1 hover:shadow-lg ${truncate ? "cursor-pointer" : ""
+        } ${isUrgent ? "border-l-4 border-l-red-500" : isPinned ? "border-l-4 border-l-amber-400" : ""}`}
     >
       <div className="flex items-center justify-between gap-2">
-        <p className="text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-cyan-300/90">
+        <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
           {notice.category || "General"}
-        </p>
-        {notice.priority === "Urgent" && (
-          <span className="rounded-full bg-red-500/15 px-3 py-1 text-[0.7rem] font-semibold text-red-300 ring-1 ring-red-500/50">
-            Urgent
-          </span>
-        )}
-        {notice.pin && (
-          <span className="rounded-full bg-amber-400/15 px-3 py-1 text-[0.7rem] font-semibold text-amber-200 ring-1 ring-amber-400/60">
-            Pinned
-          </span>
-        )}
+        </span>
+        <div className="flex gap-2">
+          {isUrgent && (
+            <span className="rounded-full bg-red-50 px-2 py-0.5 text-xs font-medium text-red-600 ring-1 ring-red-100">
+              Urgent
+            </span>
+          )}
+          {isPinned && (
+            <span className="rounded-full bg-amber-50 px-2 py-0.5 text-xs font-medium text-amber-600 ring-1 ring-amber-100">
+              Pinned
+            </span>
+          )}
+        </div>
       </div>
-      <h3 className="text-base font-semibold tracking-tight text-slate-50 sm:text-lg">
+
+      <h3 className="font-heading text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
         {notice.title}
       </h3>
+
       <div
-        className={`prose prose-invert prose-xs text-slate-300 sm:prose-sm ${
-          truncate ? "line-clamp-2 overflow-hidden" : ""
-        }`}
+        className={`prose prose-sm prose-slate text-slate-600 ${truncate ? "line-clamp-2" : ""
+          }`}
       >
         <PortableText value={notice.content} />
       </div>
-      <div className="mt-auto flex items-center justify-between text-xs text-slate-400 sm:text-sm">
-        <div>
-          <p className="font-medium">{notice.author || "Admin"}</p>
+
+      <div className="mt-auto flex items-center justify-between border-t border-slate-100 pt-4 text-sm">
+        <div className="flex flex-col">
+          <span className="font-medium text-slate-900">{notice.author || "Admin"}</span>
           {notice.publishedAt && (
-            <p className="text-[0.72rem] text-slate-400">{format(notice.publishedAt)}</p>
+            <span className="text-xs text-slate-500">{format(notice.publishedAt)}</span>
           )}
         </div>
+
         {notice.pdfUrl && !truncate && (
           <a
             href={notice.pdfUrl}
             target="_blank"
             rel="noopener noreferrer"
             onClick={(e) => e.stopPropagation()}
-            className="inline-flex items-center gap-2 rounded-md bg-cyan-600/10 px-3 py-1 text-sm font-semibold text-cyan-300 hover:bg-cyan-600/20 hover:text-cyan-200"
+            className="inline-flex items-center gap-2 rounded-lg bg-slate-100 px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-200 transition-colors"
           >
+            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
             Download PDF
           </a>
         )}
+
         {truncate && (
-          <span className="text-xs font-medium text-cyan-400 hover:text-cyan-300">
+          <span className="font-medium text-blue-600 group-hover:translate-x-1 transition-transform">
             Read more →
           </span>
         )}

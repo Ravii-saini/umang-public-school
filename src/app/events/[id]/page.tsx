@@ -9,6 +9,8 @@ type Props = {
   params: { id: string };
 };
 
+export const dynamic = 'force-dynamic';
+
 export async function generateMetadata({ params }: Props) {
   const event = await fetchEventById(params.id);
   if (!event) return { title: "Event Not Found" };

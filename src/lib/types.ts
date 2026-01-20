@@ -66,3 +66,14 @@ export type Faculty = {
   order?: number;
   featured?: boolean;
 };
+
+export type Download = {
+  _id: string;
+  title: string;
+  description?: string;
+  category: string;
+  fileUrl: string;
+  fileSize?: string;
+  publishedAt: string;
+  featured?: boolean;
+};
