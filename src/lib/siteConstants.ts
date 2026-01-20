@@ -5,15 +5,15 @@ export const ADDRESS = "Near Govt. School, Ward 43, Snathalka, Bhiwadi, 301019";
 export const HERO_DESCRIPTION = "Nurturing bright minds with compassionate education.";
 
 // Optional: contact placeholders (leave empty to hide)
-export const CONTACT_EMAIL = "umang_public_school@gmail.com";
+export const CONTACT_EMAIL = "umangschoolbhiwadi@gmail.com";
 export const CONTACT_PHONE = "7426830982";
 export const CONTACT_PHONE1 = "7733009970";
 export const INSTAGRAM = "https://www.instagram.com/umang_public_school/";
 export const INSTAGRAM_HANDLE = "@umang_public_school";
 
 // Counts shown on the homepage (hard-coded). Edit as needed.
-export const FACULTY_COUNT = 24;
-export const STUDENT_COUNT = 520;
+export const FACULTY_COUNT = "18+";
+export const STUDENT_COUNT = "400+";
 
 // Eight highlight points to show on the home page
 export const HIGHLIGHTS = [

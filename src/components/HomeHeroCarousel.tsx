@@ -34,8 +34,8 @@ export function HomeHeroCarousel({ items }: Props) {
                 <div
                     key={item._id}
                     className={`absolute inset-0 transition-all duration-1000 ${index === currentIndex
-                            ? "opacity-100 scale-100"
-                            : "opacity-0 scale-105"
+                        ? "opacity-100 scale-100"
+                        : "opacity-0 scale-105"
                         }`}
                 >
                     {item.imageUrl && (
@@ -57,30 +57,30 @@ export function HomeHeroCarousel({ items }: Props) {
             ))}
 
             {/* Modern Overlay Content */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center">
-                <div className="space-y-6 px-4">
+            <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center sm:p-4">
+                <div className="w-full max-w-4xl space-y-4 px-2 sm:space-y-6 sm:px-4">
                     {/* Animated gradient tagline */}
-                    <p className="animate-fade-in-down text-base font-bold tracking-widest uppercase sm:text-lg md:text-2xl drop-shadow-lg">
-                        <span className="bg-gradient-to-r from-cyan-400 via-indigo-300 to-violet-400 bg-200% bg-clip-text text-transparent animate-gradient-shift">
+                    <p className="animate-fade-in-down text-xs font-bold tracking-[0.2em] uppercase sm:text-lg md:text-2xl drop-shadow-md">
+                        <span className="bg-gradient-to-r from-cyan-300 via-white to-indigo-200 bg-200% bg-clip-text text-transparent animate-gradient-shift">
                             Learning Today, Leading Tomorrow
                         </span>
                     </p>
 
                     {/* Main heading with slide-up animation */}
-                    <h2 className="animate-fade-in-up font-heading text-3xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl drop-shadow-2xl leading-tight">
+                    <h2 className="animate-fade-in-up font-heading text-3xl font-bold tracking-tight text-white sm:text-5xl md:text-7xl drop-shadow-2xl leading-[1.1]">
                         Best English Medium School in{" "}
-                        <span className="bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
+                        <span className="block mt-1 bg-gradient-to-r from-indigo-300 via-cyan-200 to-indigo-300 bg-clip-text text-transparent sm:inline sm:mt-0">
                             Bhiwadi
                         </span>
                     </h2>
 
                     {/* Subtitle with delay */}
-                    <p className="animate-fade-in text-lg font-semibold text-indigo-100 sm:text-xl md:text-2xl drop-shadow-md">
-                        Nursery to 10th Class
+                    <p className="animate-fade-in text-sm font-medium text-indigo-100/90 sm:text-xl md:text-2xl drop-shadow-sm">
+                        Nursery to 10th Class • Excellence in Education
                     </p>
 
                     {/* Decorative line */}
-                    <div className="mx-auto h-1 w-24 rounded-full bg-gradient-to-r from-transparent via-cyan-400 to-transparent animate-pulse-glow" />
+                    <div className="mx-auto h-1 w-16 rounded-full bg-gradient-to-r from-transparent via-cyan-400 to-transparent animate-pulse-glow sm:w-24" />
                 </div>
             </div>
 
@@ -91,8 +91,8 @@ export function HomeHeroCarousel({ items }: Props) {
                         key={index}
                         onClick={() => setCurrentIndex(index)}
                         className={`group relative h-2 rounded-full transition-all duration-300 ${index === currentIndex
-                                ? "w-12 bg-gradient-to-r from-indigo-400 to-cyan-400"
-                                : "w-2 bg-white/40 hover:bg-white/60"
+                            ? "w-12 bg-gradient-to-r from-indigo-400 to-cyan-400"
+                            : "w-2 bg-white/40 hover:bg-white/60"
                             }`}
                         aria-label={`Go to slide ${index + 1}`}
                     >

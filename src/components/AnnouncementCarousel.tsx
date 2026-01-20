@@ -28,14 +28,20 @@ export function AnnouncementCarousel({ announcements, variant = "default" }: Pro
   // Minimal Variant (Text only, for banners)
   if (variant === "minimal") {
     const content = (
-      <div className="flex items-center gap-2 animate-fade-in">
-        <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/20 text-xs">
-          {current.icon || "📢"}
-        </span>
-        <p className="text-sm font-medium text-white line-clamp-1">
-          {current.title}
-          {current.description && <span className="opacity-80 mx-1">- {current.description}</span>}
-        </p>
+      <div className="group/item flex items-center gap-3 animate-fade-in">
+        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/10 ring-1 ring-white/20 transition-all group-hover/item:bg-white/20">
+          <span className="text-sm">{current.icon || "📢"}</span>
+        </div>
+        <div className="flex-1 overflow-hidden">
+          <p className="truncate text-xs font-bold uppercase tracking-wider text-white/90 sm:text-sm">
+            {current.title}
+          </p>
+          {current.description && (
+            <p className="truncate text-[10px] font-medium text-white/60 sm:text-xs">
+              {current.description}
+            </p>
+          )}
+        </div>
       </div>
     );
 

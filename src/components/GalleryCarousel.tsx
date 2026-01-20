@@ -23,7 +23,7 @@ export function GalleryCarousel({ items }: Props) {
 
   if (!items || items.length === 0) {
     return (
-      <div className="relative h-96 w-full overflow-hidden rounded-2xl border border-slate-800/70 bg-slate-950/70">
+      <div className="relative h-64 w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 sm:h-80 md:h-96">
         <div className="flex h-full items-center justify-center">
           <p className="text-slate-400">No gallery items yet.</p>
         </div>
@@ -48,7 +48,7 @@ export function GalleryCarousel({ items }: Props) {
   return (
     <div className="relative w-full">
       {/* Main Carousel Container */}
-      <div className="relative h-96 w-full overflow-hidden rounded-2xl border border-slate-800/70 bg-slate-950/70 ring-1 ring-slate-900/80 shadow-lg">
+      <div className="relative h-64 w-full overflow-hidden rounded-2xl border border-slate-200/60 bg-slate-900 shadow-xl sm:h-80 md:h-96">
         {/* Image */}
         <div className="relative h-full w-full">
           {current.imageUrl ? (
@@ -65,7 +65,7 @@ export function GalleryCarousel({ items }: Props) {
               No image
             </div>
           )}
-          
+
           {/* Overlay with title and category */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
             <div className="absolute bottom-0 left-0 right-0 p-6">
@@ -131,11 +131,10 @@ export function GalleryCarousel({ items }: Props) {
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`h-2 rounded-full transition-all ${
-                index === currentIndex
+              className={`h-2 rounded-full transition-all ${index === currentIndex
                   ? "w-8 bg-cyan-400"
                   : "w-2 bg-slate-600 hover:bg-slate-500"
-              }`}
+                }`}
               aria-label={`Go to slide ${index + 1}`}
             />
           ))}

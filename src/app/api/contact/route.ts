@@ -19,8 +19,13 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Name and email are required" }, { status: 400 });
   }
 
+  const client = writeClient.withConfig({
+    token: process.env.SANITY_WRITE_TOKEN?.trim(),
+    useCdn: false,
+  });
+
   try {
-    await writeClient.create({
+    await client.create({
       _type: "contactSubmission",
       name,
       email,
@@ -31,8 +36,11 @@ export async function POST(request: Request) {
     });
 
     return NextResponse.json({ ok: true });
-  } catch (error) {
+  } catch (error: any) {
     console.error("[contactSubmission]", error);
-    return NextResponse.json({ error: "Failed to submit contact form" }, { status: 500 });
+    return NextResponse.json(
+      { error: error?.message || "Failed to submit contact form" },
+      { status: 500 }
+    );
   }
 }

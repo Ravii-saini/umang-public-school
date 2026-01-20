@@ -18,30 +18,30 @@ export function NoticesEventsTabs({ notices, events }: Props) {
         <div className="section-shell">
             <div className="mb-6 flex items-center justify-between">
                 {/* Modern Tabs with gradient */}
-                <div className="relative flex rounded-full bg-gradient-to-r from-slate-100 to-slate-50 p-1 shadow-inner">
+                <div className="relative flex flex-1 max-w-[320px] rounded-full bg-slate-100 p-1 shadow-inner sm:flex-none">
                     <button
                         onClick={() => setActiveTab("notices")}
-                        className={`relative z-10 rounded-full px-6 py-2.5 text-sm font-bold transition-all duration-300 ${activeTab === "notices"
-                                ? "text-white"
-                                : "text-slate-600 hover:text-slate-900"
+                        className={`relative z-10 flex-1 rounded-full px-4 py-2 text-xs font-bold transition-all duration-300 sm:px-6 sm:py-2.5 sm:text-sm ${activeTab === "notices"
+                            ? "text-white"
+                            : "text-slate-600 hover:text-slate-900"
                             }`}
                     >
                         {activeTab === "notices" && (
-                            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-600 to-violet-600 shadow-lg animate-gradient-shift" />
+                            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-600 to-violet-600 shadow-md animate-gradient-shift" />
                         )}
-                        <span className="relative z-10">📢 Notices</span>
+                        <span className="relative z-10 whitespace-nowrap">📢 Notices</span>
                     </button>
                     <button
                         onClick={() => setActiveTab("events")}
-                        className={`relative z-10 rounded-full px-6 py-2.5 text-sm font-bold transition-all duration-300 ${activeTab === "events"
-                                ? "text-white"
-                                : "text-slate-600 hover:text-slate-900"
+                        className={`relative z-10 flex-1 rounded-full px-4 py-2 text-xs font-bold transition-all duration-300 sm:px-6 sm:py-2.5 sm:text-sm ${activeTab === "events"
+                            ? "text-white"
+                            : "text-slate-600 hover:text-slate-900"
                             }`}
                     >
                         {activeTab === "events" && (
-                            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-violet-600 to-cyan-600 shadow-lg animate-gradient-shift" />
+                            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-violet-600 to-cyan-600 shadow-md animate-gradient-shift" />
                         )}
-                        <span className="relative z-10">🎉 Events</span>
+                        <span className="relative z-10 whitespace-nowrap">🎉 Events</span>
                     </button>
                 </div>
 
